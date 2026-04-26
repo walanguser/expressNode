@@ -12,7 +12,7 @@ router.post("/", async (req, res)=> {
         const savedEntry = await formEntry.save(); //Save to MongoDB
         console.log("Saved Data: ", savedEntry);
 
-        res.status(201).json({message: "Form Submitted Successfully", data: savedEntry });
+        res.status(200).json({message: "Form Submitted Successfully", data: savedEntry });
     } catch (error) {
         console.error("Error saving form data:", error);
 
