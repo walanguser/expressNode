@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
 
 app.get('/', (req, res) => {
     res.send(`<!DOCTYPE html>
@@ -100,9 +102,17 @@ const submitTalentForm = require('./API/submit')
 
 //use API
 app.use("/submit", submitTalentForm);
-// Start the server
-const PORT = 5000
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// // Start the server locally
+// const PORT = 5000
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
+//Start the Server Mircrosft Azure
+  const PORT = process.env.PORT || 3000;
+
+  server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
