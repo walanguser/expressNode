@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -21,14 +21,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: '20.x'
 
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
-      
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -51,13 +51,13 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3E43FA262A8648D4A65213C414F29ACD }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_56220820B6C34B47A9A369DBBBA37B74 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3E69E0B62299406FA48E6049A0699A27 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_240A66CE454E4CF4959129F821655ADA }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_EE25493DBB5D4F9EAAB8110DF2A668DF }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_044B20318E484A33B6C10BD6FDD23D17 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'JimenezAPI'
           slot-name: 'Production'
