@@ -101,7 +101,7 @@ app.use(express.json());
 const submitTalentForm = require('./API/submit')
 
 //use API
-app.use("/submit", submitTalentForm);
+app.use('/submit', submitTalentForm);
 
 // // Start the server locally
 // const PORT = 5000

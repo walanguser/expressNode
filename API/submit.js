@@ -3,7 +3,7 @@ const router = express.Router();
 const Form = require("../Models/talentForm");
 
 //POST route to handle form submission
-router.post("/", async (req, res)=> {
+router.post('/', async (req, res)=> {
     const { name, age, email, talent} = req.body;
 
     try{
